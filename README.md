@@ -13,15 +13,15 @@ Mini-Library for create chart.
 ```mermaid
 graph TB;
     
-    InitDataList-->ScaledData
-    ScaledData-->BarChart;
+
+    InitDataList-->BarChart;
     Window-->BarChart;
     
     Window-->PieChart;
-    ScaledData-->PieChart;
+    InitDataList-->PieChart;
 
     Window-->LineChart;
-    ScaledData-->LineChart;
+    InitDataList-->LineChart;
 
     BarChart-->Chart;
     PieChart-->Chart;
@@ -33,5 +33,7 @@ graph TB;
 ## To Do List
 
 - [x] Dataset input will be taken
-- [ ] The dataset will be scaled for graph sizing
-- [ ] Column bar will be drawn for barChart
+- [x] The dataset will be scaled for BarChart
+- [x] Column bar will be drawn for BarChart
+- [x] Column bar will be drawn for BarChart
+- [ ] New class will be created => PieChart

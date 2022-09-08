@@ -8,7 +8,10 @@ namespace Graph
     {
         window = cv::Mat(window_height, window_width, CV_8UC3, cv::Scalar(0, 0, 0));
     }
-
+    cv::Mat &Window::getWindowMat() { return window; }
+    std::string &Window::getName() { return window_name; }
+    int &Window::getWidth() { return window_width; }
+    int &Window::getHeight() { return window_height; }
     Window::~Window() = default;
 
 }

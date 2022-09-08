@@ -11,15 +11,17 @@ namespace Graph
     {
     private:
         cv::Mat window;
-
-    protected:
         std::string window_name{};
         int window_width{};
         int window_height{};
 
     public:
         Window(std::string_view name, int width, int height);
-        cv::Mat &getWindowMat() { return window; }
+        cv::Mat &getWindowMat();
+        std::string& getName();
+        int &getWidth();
+        int &getHeight();
+        virtual void imshow() = 0;
         virtual ~Window();
     };
 }

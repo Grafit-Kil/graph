@@ -3,22 +3,24 @@
 
 #include <opencv2/opencv.hpp>
 #include "window.h"
-//#include "initDataList.h"
+#include "initDataList.h"
 
 namespace Graph
 {
-    class BarChart : public Window
+
+    class BarChart : public Window, public InitDataList
     {
     private:
         std::string column_name{};
         std::string row_name{};
+        std::vector<int> columnNumber;
 
     public:
         BarChart(std::string_view name, int width, int height,
-                 std::string_view x_name, std::string_view y_name);
+                 std::vector<std::vector<int>> data, int scl,
+                 std::string_view x_name = "", std::string_view y_name = "");
 
-        void imshow();
-        
+        void imshow() override;
     };
 }
 
