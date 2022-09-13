@@ -1,5 +1,3 @@
-﻿![image](img/G.png)
-
 # Graph
 
 Mini-Library for create chart.
@@ -36,4 +34,6 @@ graph TB;
 - [x] The dataset will be scaled for BarChart
 - [x] Column bar will be drawn for BarChart
 - [x] Column bar will be drawn for BarChart
+- [x] Range(),median(), max() and min() will be written for InitDatalist.
 - [ ] New class will be created => PieChart
+- [ ] New class will be created => LineChart

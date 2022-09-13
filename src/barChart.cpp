@@ -8,14 +8,22 @@ namespace Graph
                        std::string_view x_name, std::string_view y_name)
         : Window{name, width, height}, InitDataList{data, scl}, column_name{x_name}, row_name{y_name} {}
 
+    void BarChart::setBarName(const std::vector<std::string> &bar_name_)
+    {
+        setupBarName() = bar_name_;
+    }
     void BarChart::imshow()
     {
+
         // Apsis and Ordinate line
         cv::line(getWindowMat(), cv::Point(100, getHeight() - 100),
                  cv::Point(100, 100), cv::Scalar(255, 255, 111), 3);
 
         cv::line(getWindowMat(), cv::Point(100, getHeight() - 100),
                  cv::Point(getWidth() - 100, getHeight() - 100), cv::Scalar(50, 50, 255), 3);
+
+        cv::line(getWindowMat(), cv::Point(100, 100),
+                 cv::Point(getWidth() - 100, 100), cv::Scalar(50, 50, 255), 3);
 
         cv::putText(getWindowMat(), row_name, cv::Point(((getWidth() / 2) - 100), (getHeight() - 20)),
                     cv::FONT_HERSHEY_COMPLEX, 2, cv::Scalar(219, 131, 31), 1, 8, false);
@@ -26,7 +34,7 @@ namespace Graph
         // Column Bars
         int column_begin{150};
         int column_end{210};
-        int bar_value_begin{190};
+        unsigned int count_bar_name{0};
         for (auto i : getData())
         {
             std::string bar_value = std::to_string(i);
@@ -38,7 +46,14 @@ namespace Graph
             // Print bar value for rotateText
             cv::putText(rotateText, bar_value, cv::Point(150, column_begin + 60),
                         cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 2, cv::INTER_MAX, false);
+            // Print bar name for rotateText
+            if (getBarName().size() > count_bar_name)
+            {
+                cv::putText(rotateText, getBarName()[count_bar_name], cv::Point(getWidth() - 130, column_end),
+                            cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 2, cv::INTER_MAX, false);
 
+                count_bar_name++;
+            }
             column_begin += 70;
             column_end += 70;
         }

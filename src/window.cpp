@@ -12,6 +12,8 @@ namespace Graph
     std::string &Window::getName() { return window_name; }
     int &Window::getWidth() { return window_width; }
     int &Window::getHeight() { return window_height; }
+    const std::vector<std::string> &Window::getBarName(){return bar_name;}
+    std::vector<std::string> &Window::setupBarName(){return bar_name;}
     Window::~Window() = default;
 
 }

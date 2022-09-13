@@ -20,6 +20,7 @@ namespace Graph
                  std::vector<std::vector<int>> data, int scl,
                  std::string_view x_name = "", std::string_view y_name = "");
 
+        void setBarName(const std::vector<std::string>&) override;
         void imshow() override;
     };
 }
