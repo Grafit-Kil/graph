@@ -1,4 +1,5 @@
-// example
+// example BarChart
+
 #include "include/barChart.h"
 
 int main()

@@ -1,3 +1,5 @@
+<img src="img/barChart.png" alt="drawing" width="600"/>
+
 # Graph
 
 Mini-Library for create chart.

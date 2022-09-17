@@ -17,16 +17,13 @@ namespace Graph
 
         // Apsis and Ordinate line
         cv::line(getWindowMat(), cv::Point(100, getHeight() - 100),
-                 cv::Point(100, 100), cv::Scalar(255, 255, 111), 3);
-
-        cv::line(getWindowMat(), cv::Point(100, getHeight() - 100),
-                 cv::Point(getWidth() - 100, getHeight() - 100), cv::Scalar(50, 50, 255), 3);
+                 cv::Point(100, 100), cv::Scalar(132, 31, 57), 3);
 
         cv::line(getWindowMat(), cv::Point(100, 100),
-                 cv::Point(getWidth() - 100, 100), cv::Scalar(50, 50, 255), 3);
+                 cv::Point(getWidth() - 100, 100), cv::Scalar(80, 50, 255), 3);
 
         cv::putText(getWindowMat(), row_name, cv::Point(((getWidth() / 2) - 100), (getHeight() - 20)),
-                    cv::FONT_HERSHEY_COMPLEX, 2, cv::Scalar(219, 131, 31), 1, 8, false);
+                    cv::FONT_HERSHEY_DUPLEX, 2, cv::Scalar(75, 135, 240), 4, 8, false);
 
         // rotate apsis text for ordinat text
         cv::Mat rotateText(getWidth(), getWidth(), CV_8UC3, cv::Scalar(0, 0, 0));
@@ -58,8 +55,12 @@ namespace Graph
             column_end += 70;
         }
 
+        cv::putText(getWindowMat(), "1/" + std::to_string(getScale()), cv::Point(getWidth() - 100 , getHeight() -90),
+                    cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(98, 212, 49), 1, 8, false);
+
+
         cv::putText(rotateText, column_name, cv::Point(((getWidth() + 100) / 2) - 100, 100),
-                    cv::FONT_HERSHEY_COMPLEX, 2, cv::Scalar(181, 124, 31), 1, 8, false);
+                    cv::FONT_HERSHEY_DUPLEX, 2, cv::Scalar(75, 135, 240), 4, 8, false);
 
         cv::Mat rot_mat = getRotationMatrix2D(cv::Point(getWidth() / 2, getWidth() / 2), 90.0, 1.0);
         cv::warpAffine(rotateText, rotateText, rot_mat, rotateText.size());
@@ -67,6 +68,9 @@ namespace Graph
         rotateText(cv::Rect(20, 0, rotateText.cols - 20, rotateText.rows)).copyTo(rotateText(cv::Rect(0, 0, rotateText.cols - 20, rotateText.rows)));
         cv::resize(rotateText, rotateText, cv::Size(getWidth(), getHeight()), cv::INTER_LINEAR);
         getWindowMat() = getWindowMat() + rotateText;
+
+        cv::line(getWindowMat(), cv::Point(100, getHeight() - 100),
+                 cv::Point(getWidth() - 100, getHeight() - 100), cv::Scalar(80, 50, 255), 3);
 
         cv::imshow(getName(), getWindowMat());
     }
